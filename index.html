@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nusantara Rattan Export</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Aturan: teks yang bisa diterjemahkan diberi atribut data-i18n="kunci" -->
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand brand" href="#home">🌿 Nusantara Rattan</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto gap-lg-2 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#products" data-i18n="nav_products"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#cashier" data-i18n="nav_checkout"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#tracking" data-i18n="nav_track"></a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact"></a></li>
+        <!-- Tombol ganti bahasa -->
+        <li class="nav-item ms-lg-2">
+          <div class="lang-switch">
+            <button id="btn-en" onclick="setLang('en')">EN</button>
+            <button id="btn-id" onclick="setLang('id')">ID</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 mb-5 mb-lg-0">
+        <span class="hero-badge mb-3" data-i18n="hero_badge"></span>
+        <h1 data-i18n="hero_title"></h1>
+        <p class="lead my-4" data-i18n="hero_lead"></p>
+        <a href="#products" class="btn btn-light rounded-pill px-4 py-2 me-2" data-i18n="btn_view"></a>
+        <a href="#tracking" class="btn btn-outline-light rounded-pill px-4 py-2" data-i18n="btn_track"></a>
+      </div>
+      <div class="col-lg-5 hero-emoji">🪑</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= STATISTIK ================= -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3 stat-box"><h3>15+</h3><p data-i18n="stat1"></p></div>
+      <div class="col-6 col-md-3 stat-box"><h3>40+</h3><p data-i18n="stat2"></p></div>
+      <div class="col-6 col-md-3 stat-box"><h3>500+</h3><p data-i18n="stat3"></p></div>
+      <div class="col-6 col-md-3 stat-box"><h3>100%</h3><p data-i18n="stat4"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TENTANG ROTAN ================= -->
+<section id="about" class="bg-sand">
+  <div class="container">
+    <h2 class="section-title text-center mb-5" data-i18n="about_title"></h2>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <p class="fs-5" data-i18n="about_p1"></p>
+        <p data-i18n="about_p2"></p>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6"><div class="info-card"><div class="icon">♻️</div><h5 data-i18n="c1t"></h5><p class="small mb-0" data-i18n="c1d"></p></div></div>
+          <div class="col-6"><div class="info-card"><div class="icon">💪</div><h5 data-i18n="c2t"></h5><p class="small mb-0" data-i18n="c2d"></p></div></div>
+          <div class="col-6"><div class="info-card"><div class="icon">🪶</div><h5 data-i18n="c3t"></h5><p class="small mb-0" data-i18n="c3d"></p></div></div>
+          <div class="col-6"><div class="info-card"><div class="icon">🎨</div><h5 data-i18n="c4t"></h5><p class="small mb-0" data-i18n="c4d"></p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUK ================= -->
+<section id="products">
+  <div class="container">
+    <h2 class="section-title text-center mb-2" data-i18n="prod_title"></h2>
+    <p class="text-center text-blue mb-5" data-i18n="prod_sub"></p>
+    <div class="row g-4" id="productList"></div>
+  </div>
+</section>
+
+<!-- ================= KASIR ================= -->
+<section id="cashier" class="bg-sand">
+  <div class="container">
+    <h2 class="section-title text-center mb-5" data-i18n="cash_title"></h2>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="cashier-box">
+          <h4 class="mb-3" data-i18n="your_order"></h4>
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead><tr><th data-i18n="th_item"></th><th data-i18n="th_variant"></th><th data-i18n="th_qty"></th><th class="text-end" data-i18n="th_sub"></th><th></th></tr></thead>
+              <tbody id="cartBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="cashier-box">
+          <h4 class="mb-3" data-i18n="ship_total"></h4>
+          <label class="form-label" data-i18n="dest"></label>
+          <select id="country" class="form-select mb-3"></select>
+          <div class="summary-row"><span data-i18n="items_total"></span><span id="sumItems"></span></div>
+          <div class="summary-row"><span data-i18n="total_weight"></span><span id="sumWeight"></span></div>
+          <div class="summary-row"><span data-i18n="ship_cost"></span><span id="sumShip"></span></div>
+          <div class="summary-row summary-total"><span data-i18n="total"></span><span id="sumTotal"></span></div>
+          <div class="eta-box my-3">🚚 <strong data-i18n="eta"></strong><br><span id="etaText"></span></div>
+          <button class="btn btn-brand w-100" id="checkoutBtn" data-i18n="place_order"></button>
+          <div id="orderMsg" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRACKING ================= -->
+<section id="tracking">
+  <div class="container">
+    <h2 class="section-title text-center mb-2" data-i18n="track_title"></h2>
+    <p class="text-center text-blue mb-4"><span data-i18n="track_sub"></span> <strong>RTN-1001</strong> / <strong>RTN-1002</strong></p>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="input-group mb-2">
+          <input id="trackInput" class="form-control form-control-lg" data-i18n-ph="track_ph">
+          <button class="btn btn-brand" id="trackBtn" data-i18n="track_btn"></button>
+        </div>
+        <div id="trackResult"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5"><h4 class="brand text-white">🌿 Nusantara Rattan</h4><p data-i18n="footer_desc"></p></div>
+      <div class="col-md-4"><h6 class="text-white" data-i18n="f_contact"></h6><p class="mb-1">📍 Denpasar, Bali, Indonesia</p><p class="mb-1">✉️ export@nusantararattan.com</p><p>📞 +62 361 000 000</p></div>
+      <div class="col-md-3"><h6 class="text-white" data-i18n="f_menu"></h6><a href="#products" data-i18n="nav_products"></a><br><a href="#cashier" data-i18n="nav_checkout"></a><br><a href="#tracking" data-i18n="nav_track"></a></div>
+    </div>
+    <hr><p class="text-center small mb-0" data-i18n="rights"></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* =====================================================
+   1. KAMUS TERJEMAHAN
+   Mau tambah teks baru? Tambahkan kunci yang sama di "en" dan "id",
+   lalu pasang data-i18n="kunci" di HTML.
+   ===================================================== */
+const text = {
+  en: {
+    nav_about: "About Rattan", nav_products: "Products", nav_checkout: "Checkout", nav_track: "Track Order", nav_contact: "Contact",
+    hero_badge: "🌍 Exporting from Indonesia Worldwide",
+    hero_title: "Natural Rattan, <br>Crafted for the World",
+    hero_lead: "Sustainable, handwoven and export-grade rattan furniture and décor — direct from the artisans of Indonesia to your doorstep.",
+    btn_view: "View Products", btn_track: "Track Order",
+    stat1: "Years of Experience", stat2: "Destination Countries", stat3: "Happy Buyers", stat4: "Natural Material",
+    about_title: "What is Rattan?",
+    about_p1: "Rattan is a natural climbing palm that grows in the tropical rainforests of Southeast Asia, Africa and Australasia. Indonesia is the world's largest producer, supplying around 80% of the global rattan raw material.",
+    about_p2: "Unlike bamboo, rattan is solid and not hollow, which makes it strong yet flexible. Once harvested, the vine is cleaned, dried, then bent, woven or steamed into furniture, baskets, lamps and home décor. Because it regrows quickly without cutting down the whole tree, rattan is an eco-friendly alternative to hardwood.",
+    c1t: "Sustainable", c1d: "Fast renewable growth, no deforestation.",
+    c2t: "Durable", c2d: "Strong, solid core that lasts for years.",
+    c3t: "Lightweight", c3d: "Easy to move and cheaper to ship.",
+    c4t: "Versatile", c4d: "Suits modern, boho and tropical styles.",
+    prod_title: "Our Products", prod_sub: "Choose a colour variant, check stock status, and add to your order.",
+    ready: "● Ready Stock", notready: "● Not Ready (Pre-order)", add: "Add to Order", preorder: "Pre-order (3–4 weeks)", variant: "Variant",
+    cash_title: "Checkout & Shipping Calculator", your_order: "🛒 Your Order",
+    th_item: "Item", th_variant: "Variant", th_qty: "Qty", th_sub: "Subtotal",
+    empty: "Your order is empty. Add products above.", pre_badge: "Pre-order",
+    ship_total: "📦 Shipping & Total", dest: "Destination country",
+    items_total: "Items total", total_weight: "Total weight", ship_cost: "Shipping cost", total: "TOTAL",
+    eta: "Estimated arrival:", eta_empty: "Add items to see estimate", eta_prod: "(includes production time)",
+    place_order: "Place Order", add_first: "Please add a product first.", order_ok: "✅ Order placed! Your tracking code:",
+    track_title: "Track Your Shipment", track_sub: "Try demo codes:", track_ph: "Enter order code, e.g. RTN-1001", track_btn: "Track",
+    not_found: "Order code not found.", order_label: "Order", status_now: "Current status:",
+    stages: ["Order received & confirmed", "Packing & quality check (Bali workshop)", "Export customs cleared", "In transit (sea / air freight)", "Arrived at destination port", "Delivered to customer"],
+    footer_desc: "Premium Indonesian rattan furniture & décor for global buyers.", f_contact: "Contact", f_menu: "Menu",
+    rights: "© 2026 Nusantara Rattan Export. All rights reserved."
+  },
+  id: {
+    nav_about: "Tentang Rotan", nav_products: "Produk", nav_checkout: "Kasir", nav_track: "Lacak Pesanan", nav_contact: "Kontak",
+    hero_badge: "🌍 Ekspor dari Indonesia ke Seluruh Dunia",
+    hero_title: "Rotan Alami, <br>Dibuat untuk Dunia",
+    hero_lead: "Furnitur dan dekorasi rotan berkelanjutan, anyaman tangan, dan berkualitas ekspor — langsung dari pengrajin Indonesia ke depan pintu Anda.",
+    btn_view: "Lihat Produk", btn_track: "Lacak Pesanan",
+    stat1: "Tahun Pengalaman", stat2: "Negara Tujuan", stat3: "Pembeli Puas", stat4: "Bahan Alami",
+    about_title: "Apa Itu Rotan?",
+    about_p1: "Rotan adalah tanaman palem merambat alami yang tumbuh di hutan hujan tropis Asia Tenggara, Afrika, dan Australasia. Indonesia adalah produsen terbesar dunia, memasok sekitar 80% bahan baku rotan global.",
+    about_p2: "Berbeda dengan bambu, rotan itu padat dan tidak berongga, sehingga kuat namun lentur. Setelah dipanen, batangnya dibersihkan, dikeringkan, lalu dilengkung, dianyam, atau diuap menjadi furnitur, keranjang, lampu, dan dekorasi rumah. Karena cepat tumbuh kembali tanpa menebang seluruh pohon, rotan menjadi alternatif ramah lingkungan pengganti kayu keras.",
+    c1t: "Berkelanjutan", c1d: "Tumbuh cepat dan terbarukan, tanpa deforestasi.",
+    c2t: "Awet", c2d: "Inti padat yang kuat dan tahan bertahun-tahun.",
+    c3t: "Ringan", c3d: "Mudah dipindahkan dan ongkir lebih murah.",
+    c4t: "Serbaguna", c4d: "Cocok untuk gaya modern, bohemian, dan tropis.",
+    prod_title: "Produk Kami", prod_sub: "Pilih varian warna, cek status stok, lalu tambahkan ke pesanan.",
+    ready: "● Stok Ready", notready: "● Belum Ready (Pre-order)", add: "Tambah ke Pesanan", preorder: "Pre-order (3–4 minggu)", variant: "Varian",
+    cash_title: "Kasir & Kalkulator Ongkir", your_order: "🛒 Pesanan Anda",
+    th_item: "Barang", th_variant: "Varian", th_qty: "Jml", th_sub: "Subtotal",
+    empty: "Pesanan masih kosong. Tambahkan produk di atas.", pre_badge: "Pre-order",
+    ship_total: "📦 Pengiriman & Total", dest: "Negara tujuan",
+    items_total: "Total barang", total_weight: "Total berat", ship_cost: "Ongkos kirim", total: "TOTAL",
+    eta: "Perkiraan tiba:", eta_empty: "Tambahkan barang untuk melihat estimasi", eta_prod: "(termasuk waktu produksi)",
+    place_order: "Pesan Sekarang", add_first: "Tambahkan produk terlebih dahulu.", order_ok: "✅ Pesanan berhasil! Kode pelacakan Anda:",
+    track_title: "Lacak Pengiriman Anda", track_sub: "Coba kode demo:", track_ph: "Masukkan kode pesanan, mis. RTN-1001", track_btn: "Lacak",
+    not_found: "Kode pesanan tidak ditemukan.", order_label: "Pesanan", status_now: "Status saat ini:",
+    stages: ["Pesanan diterima & dikonfirmasi", "Pengemasan & cek kualitas (workshop Bali)", "Lolos bea cukai ekspor", "Dalam perjalanan (kapal / udara)", "Tiba di pelabuhan tujuan", "Diterima pelanggan"],
+    footer_desc: "Furnitur & dekorasi rotan Indonesia premium untuk pembeli global.", f_contact: "Kontak", f_menu: "Menu",
+    rights: "© 2026 Nusantara Rattan Export. Semua hak dilindungi."
+  }
+};
+
+/* =====================================================
+   2. DATA PRODUK (nama & varian punya dua bahasa)
+   ready: true = Ready Stock, false = Pre-order
+   ===================================================== */
+const products = [
+  { id: 1, name: { en: "Rattan Lounge Chair", id: "Kursi Santai Rotan" }, icon: "🪑", ready: true, price: 120, weight: 6,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#C9A87C" }, { n: { en: "Honey", id: "Madu" }, color: "#B9824A" }, { n: { en: "Black Wash", id: "Hitam Pudar" }, color: "#5b4d44" }] },
+  { id: 2, name: { en: "Woven Storage Basket", id: "Keranjang Anyaman" }, icon: "🧺", ready: true, price: 35, weight: 1.5,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#D9BF97" }, { n: { en: "White Wash", id: "Putih Pudar" }, color: "#EFE6D8" }, { n: { en: "Grey Blue", id: "Biru Abu" }, color: "#5A717E" }] },
+  { id: 3, name: { en: "Pendant Lamp Shade", id: "Kap Lampu Gantung" }, icon: "💡", ready: false, price: 48, weight: 1,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#C9A87C" }, { n: { en: "Dark Brown", id: "Cokelat Tua" }, color: "#3E352F" }] },
+  { id: 4, name: { en: "Rattan Sofa Set", id: "Set Sofa Rotan" }, icon: "🛋️", ready: true, price: 480, weight: 28,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#C9A87C" }, { n: { en: "Honey", id: "Madu" }, color: "#B9824A" }, { n: { en: "Grey Blue", id: "Biru Abu" }, color: "#5A717E" }] },
+  { id: 5, name: { en: "Round Wall Mirror", id: "Cermin Dinding Bulat" }, icon: "🪞", ready: false, price: 65, weight: 3,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#D9BF97" }, { n: { en: "Black Wash", id: "Hitam Pudar" }, color: "#5b4d44" }] },
+  { id: 6, name: { en: "Rattan Coffee Table", id: "Meja Kopi Rotan" }, icon: "☕", ready: true, price: 150, weight: 9,
+    variants: [{ n: { en: "Natural", id: "Alami" }, color: "#C9A87C" }, { n: { en: "White Wash", id: "Putih Pudar" }, color: "#EFE6D8" }, { n: { en: "Honey", id: "Madu" }, color: "#B9824A" }] }
+];
+
+// Negara tujuan: biaya dasar, biaya per kg (USD), estimasi hari (min-max)
+const destinations = {
+  singapore: { name: { en: "Singapore", id: "Singapura" },        base: 20, perKg: 2.5, days: [4, 7] },
+  australia: { name: { en: "Australia", id: "Australia" },        base: 30, perKg: 3.5, days: [10, 16] },
+  japan:     { name: { en: "Japan", id: "Jepang" },               base: 35, perKg: 4,   days: [9, 14] },
+  uk:        { name: { en: "United Kingdom", id: "Inggris" },     base: 50, perKg: 5,   days: [21, 30] },
+  germany:   { name: { en: "Germany", id: "Jerman" },             base: 50, perKg: 5,   days: [21, 30] },
+  usa:       { name: { en: "United States", id: "Amerika Serikat" }, base: 60, perKg: 6, days: [25, 35] }
+};
+
+// Pesanan demo (stage = tahap berjalan, mulai dari 0)
+const orders = {
+  "RTN-1001": { stage: 2, country: "germany" },
+  "RTN-1002": { stage: 4, country: "japan" }
+};
+
+/* =====================================================
+   3. STATE (data yang berubah saat dipakai)
+   ===================================================== */
+let lang = "en";            // bahasa aktif
+let cart = [];              // isi keranjang: {pid, vi, qty}
+const chosen = {};          // varian terpilih tiap produk
+let trackedCode = "";       // kode yang sedang dilacak
+
+const $ = id => document.getElementById(id);
+const t = key => text[lang][key];                 // ambil teks sesuai bahasa aktif
+const money = n => "$" + n.toFixed(2);
+
+/* =====================================================
+   4. GANTI BAHASA
+   ===================================================== */
+function setLang(l) {
+  lang = l;
+  try { localStorage.setItem("lang", l); } catch (e) {}   // ingat pilihan bahasa
+  document.documentElement.lang = l;
+
+  // Terjemahkan semua elemen statis
+  document.querySelectorAll("[data-i18n]").forEach(el => el.innerHTML = t(el.dataset.i18n));
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => el.placeholder = t(el.dataset.i18nPh));
+
+  // Status tombol aktif
+  $("btn-en").classList.toggle("active", l === "en");
+  $("btn-id").classList.toggle("active", l === "id");
+
+  // Render ulang bagian dinamis
+  renderCountries();
+  renderProducts();
+  renderCart();
+  renderTracking();
+  $("orderMsg").innerHTML = "";
+}
+
+/* =====================================================
+   5. PRODUK
+   ===================================================== */
+function renderProducts() {
+  $("productList").innerHTML = products.map(p => {
+    const vi = chosen[p.id] || 0;
+    const v = p.variants[vi];
+    return `
+    <div class="col-md-6 col-lg-4">
+      <div class="card product-card">
+        <div class="product-img" id="img-${p.id}" style="background:${v.color}">
+          <span class="status-badge ${p.ready ? "status-ready" : "status-notready"}">${p.ready ? t("ready") : t("notready")}</span>
+          <span>${p.icon}</span>
+        </div>
+        <div class="card-body p-4">
+          <h5>${p.name[lang]}</h5>
+          <p class="price mb-2">${money(p.price)}</p>
+          <p class="small mb-1">${t("variant")}: <strong id="vname-${p.id}">${v.n[lang]}</strong></p>
+          <div class="d-flex gap-2 mb-3">
+            ${p.variants.map((x, i) => `<button class="variant-btn ${i === vi ? "active" : ""}"
+               style="background:${x.color}" title="${x.n[lang]}" onclick="selectVariant(${p.id}, ${i}, this)"></button>`).join("")}
+          </div>
+          <button class="btn ${p.ready ? "btn-brand" : "btn-outline-brand"} w-100" onclick="addToCart(${p.id})">
+            ${p.ready ? t("add") : t("preorder")}
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function selectVariant(pid, i, btn) {
+  const p = products.find(x => x.id === pid);
+  chosen[pid] = i;
+  $("img-" + pid).style.background = p.variants[i].color;
+  $("vname-" + pid).textContent = p.variants[i].n[lang];
+  btn.parentElement.querySelectorAll(".variant-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
+
+/* =====================================================
+   6. KERANJANG / KASIR
+   ===================================================== */
+function addToCart(pid) {
+  const vi = chosen[pid] || 0;
+  const found = cart.find(i => i.pid === pid && i.vi === vi);
+  if (found) found.qty++; else cart.push({ pid, vi, qty: 1 });
+  renderCart();
+  $("cashier").scrollIntoView();
+}
+
+function changeQty(pid, vi, delta) {
+  const item = cart.find(i => i.pid === pid && i.vi === vi);
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(i => i !== item);
+  renderCart();
+}
+
+function renderCart() {
+  $("cartBody").innerHTML = cart.length ? cart.map(i => {
+    const p = products.find(x => x.id === i.pid);
+    return `<tr>
+      <td>${p.name[lang]} ${p.ready ? "" : `<span class="badge bg-secondary">${t("pre_badge")}</span>`}</td>
+      <td>${p.variants[i.vi].n[lang]}</td>
+      <td>
+        <button class="qty-btn" onclick="changeQty(${i.pid}, ${i.vi}, -1)">−</button>
+        <span class="mx-2">${i.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${i.pid}, ${i.vi}, 1)">+</button>
+      </td>
+      <td class="text-end">${money(p.price * i.qty)}</td>
+      <td><button class="btn btn-sm text-danger" onclick="changeQty(${i.pid}, ${i.vi}, -99)">✕</button></td>
+    </tr>`;
+  }).join("") : `<tr><td colspan="5" class="text-center text-muted py-4">${t("empty")}</td></tr>`;
+  updateSummary();
+}
+
+/* =====================================================
+   7. TOTAL, ONGKIR & ESTIMASI TIBA
+   ===================================================== */
+function renderCountries() {
+  const current = $("country").value || "singapore";
+  $("country").innerHTML = Object.keys(destinations)
+    .map(k => `<option value="${k}">${destinations[k].name[lang]}</option>`).join("");
+  $("country").value = current;
+}
+
+function updateSummary() {
+  const d = destinations[$("country").value];
+  let itemsTotal = 0, weight = 0, hasPreorder = false;
+  cart.forEach(i => {
+    const p = products.find(x => x.id === i.pid);
+    itemsTotal += p.price * i.qty;
+    weight += p.weight * i.qty;
+    if (!p.ready) hasPreorder = true;
+  });
+  const shipping = cart.length ? d.base + d.perKg * weight : 0;
+
+  $("sumItems").textContent = money(itemsTotal);
+  $("sumWeight").textContent = weight.toFixed(1) + " kg";
+  $("sumShip").textContent = money(shipping);
+  $("sumTotal").textContent = money(itemsTotal + shipping);
+
+  if (!cart.length) { $("etaText").textContent = t("eta_empty"); return; }
+
+  const extra = hasPreorder ? 25 : 0;                       // tambahan hari produksi
+  const fmt = days => {
+    const date = new Date(); date.setDate(date.getDate() + days + extra);
+    return date.toLocaleDateString(lang === "id" ? "id-ID" : "en-GB", { day: "numeric", month: "short", year: "numeric" });
+  };
+  $("etaText").textContent = `${fmt(d.days[0])} – ${fmt(d.days[1])}` + (extra ? " " + t("eta_prod") : "");
+}
+
+/* =====================================================
+   8. PESAN SEKARANG
+   ===================================================== */
+$("checkoutBtn").onclick = () => {
+  if (!cart.length) { $("orderMsg").innerHTML = `<div class="alert alert-warning">${t("add_first")}</div>`; return; }
+  const code = "RTN-" + Math.floor(2000 + Math.random() * 7999);
+  orders[code] = { stage: 0, country: $("country").value };
+  $("orderMsg").innerHTML = `<div class="alert alert-success">${t("order_ok")} <strong>${code}</strong></div>`;
+  $("trackInput").value = code;
+  cart = []; renderCart();
+};
+
+/* =====================================================
+   9. LACAK PENGIRIMAN
+   ===================================================== */
+$("trackBtn").onclick = () => {
+  trackedCode = $("trackInput").value.trim().toUpperCase();
+  renderTracking();
+};
+
+function renderTracking() {
+  if (!trackedCode) { $("trackResult").innerHTML = ""; return; }
+  const o = orders[trackedCode];
+  if (!o) { $("trackResult").innerHTML = `<div class="alert alert-danger mt-3">${t("not_found")}</div>`; return; }
+  const stages = t("stages");
+  $("trackResult").innerHTML = `
+    <p class="mt-3 mb-0">${t("order_label")} <strong>${trackedCode}</strong> → ${destinations[o.country].name[lang]}</p>
+    <p class="text-blue">${t("status_now")} <strong>${stages[o.stage]}</strong></p>
+    <ul class="timeline">
+      ${stages.map((s, i) => `<li class="${i < o.stage ? "done" : i === o.stage ? "current" : ""}">
+        <span class="dot">${i < o.stage ? "✓" : i + 1}</span>${s}</li>`).join("")}
+    </ul>`;
+}
+
+/* =====================================================
+   10. MULAI (pakai bahasa tersimpan, default Inggris)
+   ===================================================== */
+$("country").onchange = updateSummary;
+let saved = "en";
+try { saved = localStorage.getItem("lang") || "en"; } catch (e) {}
+setLang(saved);
+</script>
+</body>
+</html>

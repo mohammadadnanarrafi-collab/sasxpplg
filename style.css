@@ -1,0 +1,433 @@
+/* =========================================================
+   NUSANTARA RATTAN - STYLESHEET
+   Daftar isi:
+   1. Warna & variabel
+   2. Dasar (body, judul, section)
+   3. Tombol
+   4. Navbar & tombol bahasa
+   5. Hero
+   6. Statistik
+   7. Tentang rotan
+   8. Produk
+   9. Kasir
+   10. Tracking
+   11. Footer
+   ========================================================= */
+
+
+/* =========================================================
+   1. WARNA & VARIABEL  (ubah di sini untuk ganti tema)
+   ========================================================= */
+:root {
+  --cream: #FDFCFA;   /* latar halaman */
+  --sand:  #E6D9C6;   /* latar section kedua */
+  --brown: #3E352F;   /* teks & footer */
+  --blue:  #5A717E;   /* warna aksen */
+
+  --radius-card: 20px;
+  --shadow-soft: 0 10px 30px rgba(62, 53, 47, 0.10);
+  --shadow-hover: 0 18px 40px rgba(62, 53, 47, 0.20);
+}
+
+
+/* =========================================================
+   2. DASAR
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, .brand {
+  font-family: 'Playfair Display', serif;
+}
+
+section {
+  padding: 90px 0;
+}
+
+.bg-sand {
+  background: var(--sand);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+
+/* garis kecil di bawah judul section */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 12px auto 0;
+  background: var(--blue);
+  border-radius: 4px;
+}
+
+
+/* =========================================================
+   3. TOMBOL
+   ========================================================= */
+.btn-brand {
+  padding: 12px 30px;
+  background: var(--blue);
+  color: #fff;
+  border: 0;
+  border-radius: 50px;
+}
+
+.btn-brand:hover {
+  background: var(--brown);
+  color: #fff;
+}
+
+.btn-outline-brand {
+  padding: 10px 28px;
+  color: var(--brown);
+  border: 2px solid var(--brown);
+  border-radius: 50px;
+}
+
+.btn-outline-brand:hover {
+  background: var(--brown);
+  color: #fff;
+}
+
+
+/* =========================================================
+   4. NAVBAR & TOMBOL BAHASA
+   ========================================================= */
+.navbar {
+  background: rgba(253, 252, 250, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 15px rgba(62, 53, 47, 0.08);
+}
+
+.navbar .brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--brown);
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  color: var(--brown);
+}
+
+.navbar .nav-link:hover {
+  color: var(--blue);
+}
+
+/* tombol ganti bahasa EN | ID */
+.lang-switch {
+  display: inline-flex;
+  overflow: hidden;
+  border: 2px solid var(--blue);
+  border-radius: 50px;
+}
+
+.lang-switch button {
+  padding: 4px 14px;
+  background: transparent;
+  color: var(--blue);
+  border: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.lang-switch button.active {
+  background: var(--blue);
+  color: #fff;
+}
+
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  background:
+    linear-gradient(120deg, rgba(62, 53, 47, 0.92), rgba(90, 113, 126, 0.75)),
+    repeating-linear-gradient(45deg, #E6D9C6 0 6px, #cdbb9f 6px 12px);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+}
+
+.hero .lead {
+  max-width: 560px;
+  opacity: 0.92;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+}
+
+.hero-emoji {
+  font-size: 12rem;
+  text-align: center;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-18px); }
+}
+
+
+/* =========================================================
+   6. STATISTIK
+   ========================================================= */
+.stat-box {
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+
+/* =========================================================
+   7. TENTANG ROTAN
+   ========================================================= */
+.info-card {
+  height: 100%;
+  padding: 28px;
+  background: var(--cream);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(62, 53, 47, 0.08);
+  transition: transform 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+}
+
+.info-card .icon {
+  font-size: 2.4rem;
+}
+
+
+/* =========================================================
+   8. PRODUK
+   ========================================================= */
+.product-card {
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border: 0;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* area gambar produk (warna berubah sesuai varian) */
+.product-img {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 230px;
+  font-size: 6rem;
+  transition: background 0.4s;
+}
+
+/* motif anyaman rotan di atas warna varian */
+.product-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background:
+    repeating-linear-gradient(45deg,  rgba(0, 0, 0, 0.35) 0 2px, transparent 2px 10px),
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 0 2px, transparent 2px 10px);
+}
+
+.product-img span {
+  position: relative;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.35));
+}
+
+/* label status stok */
+.status-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 6px 14px;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-ready    { background: #3f8f5f; }
+.status-notready { background: #b5533c; }
+
+/* bulatan pilihan varian warna */
+.variant-btn {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--sand);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.variant-btn.active {
+  box-shadow: 0 0 0 3px var(--blue);
+  transform: scale(1.12);
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+
+/* =========================================================
+   9. KASIR
+   ========================================================= */
+.cashier-box {
+  padding: 30px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 10px 35px rgba(62, 53, 47, 0.12);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--sand);
+}
+
+.summary-total {
+  border: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.eta-box {
+  padding: 14px 18px;
+  background: var(--sand);
+  border-radius: 14px;
+}
+
+/* tombol + dan - jumlah barang */
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   10. TRACKING
+   ========================================================= */
+.timeline {
+  position: relative;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* garis vertikal timeline */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19px;
+  width: 3px;
+  background: var(--sand);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 26px 60px;
+  opacity: 0.5;
+}
+
+.timeline li .dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--sand);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* tahap yang sudah lewat */
+.timeline li.done {
+  opacity: 1;
+}
+
+.timeline li.done .dot {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* tahap yang sedang berjalan */
+.timeline li.current {
+  opacity: 1;
+}
+
+.timeline li.current .dot {
+  background: var(--brown);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(90, 113, 126, 0.3);
+}
+
+
+/* =========================================================
+   11. FOOTER
+   ========================================================= */
+footer {
+  padding: 50px 0 25px;
+  background: var(--brown);
+  color: var(--sand);
+}
+
+footer a {
+  color: var(--sand);
+  text-decoration: none;
+}
